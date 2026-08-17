@@ -18,29 +18,23 @@ Explanation: The square root of 8 is 2.82842..., and since we round it down to t
 
 -------------------------------
 
-## My Approach
-I used a simple for loop to check every number starting from 1.
+## Approach
+A simple approach would be to check every number: 1^2, 2^2, 3^2,.. until the square becomes greater than x.
+However, this can take a lot of iterations for a large number.
 
-For each number i:
-i * i <= x
+Instead, we use `Binary Search`.
 
-If this condition is true, i can be the square root, so I store it in answer.
+The possible answer is somewhere between 0 and x, so we start with: `start = 0, end = x`
 
-The loop continues because there might be a larger number whose square is still less than or equal to x.
+We then choose the middle number: `mid = (start + end) // 2` and check whether mid * mid is smaller than, equal to, or greater than x.
 
----------------------------------
+# Why Binary Search Works
+The array is sorted
 
-## Why does this work?
-We need the largest integer i whose square is less than or equal to x.
-
-In other words: `i^2 <= x`
-Once i^2 becomes greater than x, no larger number can be the answer.
-The answer variable remembers the last valid number.
-
----------------------------------
+----------------------------------
 
 # Time Complexity
-O(x) - I the worst case, the loop checks numbers from 1 to x.
+O(logx)
 
 # Space Complexity
-O(1) - Only a few variables are used, regardless of the input size.
+O(1)
